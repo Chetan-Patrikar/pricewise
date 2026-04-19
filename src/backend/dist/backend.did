@@ -1,0 +1,69 @@
+type WishlistAction = 
+ variant {
+   Add;
+   Remove;
+ };
+type UserProfile = 
+ record {
+   comparisonHistory: vec ComparisonRecord;
+   email: text;
+   userId: principal;
+   wishlist: vec text;
+ };
+type SearchQuery = 
+ record {
+   brand: opt text;
+   category: opt text;
+   maxPrice: opt float64;
+   minPrice: opt float64;
+   minRating: opt float64;
+   searchTerm: opt text;
+ };
+type Product = 
+ record {
+   averageRating: float64;
+   brand: text;
+   category: text;
+   description: text;
+   id: text;
+   imageUrl: text;
+   platforms: vec PlatformPrice;
+   reviewCount: nat;
+   tags: vec text;
+   title: text;
+ };
+type PlatformPrice = 
+ record {
+   buyNowUrl: text;
+   discount: float64;
+   inStock: bool;
+   originalPrice: float64;
+   platform: Platform;
+   price: float64;
+ };
+type Platform = 
+ variant {
+   Amazon;
+   Flipkart;
+   Other: text;
+   eBay;
+ };
+type ComparisonRecord = 
+ record {
+   id: text;
+   productIds: vec text;
+   timestamp: int;
+ };
+service : {
+  addToComparisonHistory: (productIds: vec text) -> ();
+  addToWishlist: (productId: text) -> (bool);
+  getAllProducts: () -> (vec Product) query;
+  getComparisonHistory: () -> (vec ComparisonRecord);
+  getFavorites: () -> (vec text);
+  getProductById: (id: text) -> (opt Product) query;
+  getUserProfile: () -> (opt UserProfile);
+  getWishlist: () -> (vec text);
+  removeFromWishlist: (productId: text) -> (bool);
+  searchProducts: (q: SearchQuery) -> (vec Product) query;
+  toggleFavorite: (productId: text, action: WishlistAction) -> (bool);
+}

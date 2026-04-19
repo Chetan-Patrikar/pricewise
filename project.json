@@ -1,0 +1,22 @@
+{
+  "overview": "PriceWise is a smart product price comparison platform that lets users search products and compare prices across Amazon, Flipkart, eBay, and other stores side-by-side — with automatic best-deal highlighting, wishlists, and a stunning glassmorphism UI.",
+  "features": [
+    "Real-time product search with autocomplete",
+    "Side-by-side price comparison across 4 platforms",
+    "Automatic best-deal highlighting",
+    "Dark & light mode toggle",
+    "Wishlist and comparison history for logged-in users",
+    "Responsive glassmorphism UI with smooth animations",
+    "Simulated multi-platform product database (50+ products)",
+    "Filter by category, brand, price range, and rating"
+  ],
+  "category": "productivity",
+  "tags": [
+    "price-comparison",
+    "e-commerce",
+    "shopping",
+    "deals",
+    "glassmorphism"
+  ],
+  "last_updated": "2026-04-19T17:59:33.584Z"
+}

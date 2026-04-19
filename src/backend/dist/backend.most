@@ -1,0 +1,55 @@
+// Version: 1.0.0
+type ComparisonRecord__637079105 =
+  {id : Text; productIds : [Text]; timestamp : Int};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type PlatformPrice__503239080 =
+  {
+    buyNowUrl : Text;
+    discount : Float;
+    inStock : Bool;
+    originalPrice : Float;
+    platform : Platform__313354832;
+    price : Float
+  };
+type Platform__313354832 = {#Amazon; #Flipkart; #Other : Text; #eBay};
+type Product__750902660 =
+  {
+    averageRating : Float;
+    brand : Text;
+    category : Text;
+    description : Text;
+    id : Text;
+    imageUrl : Text;
+    platforms : [PlatformPrice__503239080];
+    reviewCount : Nat;
+    tags : [Text];
+    title : Text
+  };
+type UserProfile__277265826 =
+  {
+    comparisonHistory : [ComparisonRecord__637079105];
+    email : Text;
+    userId : Principal;
+    wishlist : [Text]
+  };
+actor {
+  stable products :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Product__750902660]];
+      var elementIndex : Nat__490723111
+    };
+  stable users :
+    {
+      var root : Node__46230540<Principal, UserProfile__277265826>;
+      var size : Nat__490723111
+    }
+};
